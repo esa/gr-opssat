@@ -217,7 +217,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(416, 220)</value>
+      <value>(432, 220)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -260,7 +260,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1136, 648)</value>
+      <value>(1104, 648)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -299,7 +299,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(888, 516)</value>
+      <value>(928, 516)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -346,7 +346,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(632, 524)</value>
+      <value>(696, 524)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -652,7 +652,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(808, 192)</value>
+      <value>(816, 192)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -715,7 +715,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(400, 396)</value>
+      <value>(472, 396)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -770,7 +770,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 212)</value>
+      <value>(616, 212)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -880,7 +880,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 284)</value>
+      <value>(432, 284)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1135,7 +1135,7 @@
     <key>satellites_check_address</key>
     <param>
       <key>address</key>
-      <value>DL0ESA</value>
+      <value>DP0OPS</value>
     </param>
     <param>
       <key>alias</key>
@@ -1151,7 +1151,7 @@
     </param>
     <param>
       <key>direction</key>
-      <value>"to"</value>
+      <value>"from"</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1159,7 +1159,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(216, 528)</value>
+      <value>(256, 528)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1167,7 +1167,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>satellites_check_address_1</value>
+      <value>satellites_check_address_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -1249,7 +1249,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 404)</value>
+      <value>(696, 404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1292,7 +1292,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(192, 416)</value>
+      <value>(264, 416)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1331,7 +1331,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(432, 528)</value>
+      <value>(488, 528)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1362,7 +1362,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(920, 412)</value>
+      <value>(1128, 412)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1470,7 +1470,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 540)</value>
+      <value>(32, 524)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1648,7 +1648,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>satellites_check_address_1</source_block_id>
+    <source_block_id>satellites_check_address_0</source_block_id>
     <sink_block_id>satellites_strip_ax25_header_0</sink_block_id>
     <source_key>ok</source_key>
     <sink_key>in</sink_key>
@@ -1685,7 +1685,7 @@
   </connection>
   <connection>
     <source_block_id>virtual_source_0_0</source_block_id>
-    <sink_block_id>satellites_check_address_1</sink_block_id>
+    <sink_block_id>satellites_check_address_0</sink_block_id>
     <source_key>out</source_key>
     <sink_key>in</sink_key>
   </connection>
