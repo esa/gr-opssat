@@ -12,22 +12,22 @@ https://www.esa.int/Our_Activities/Operations/OPS-SAT
 Can be found in docs/os-uhf-specs.pdf
 
 ### Applications
-1. UHF receiver application (uhf_rx.grc)
+1. UHF receiver application (os_uhf_rx.grc)
     1. Offset sampling (removal of the DC peak of SDRs)
     2. Doppler compensation (with GPredict)
     3. Frequency shifting to baseband and downsampling
     5. Noise suppressor (Squelch)
     4. ZMQ sink
-2. OPS-SAT demodulator and decoder (os-demod-decod.grc)
+2. OPS-SAT demodulator and decoder (os-demod-decode.grc)
     1. ZMQ source
     2. GMSK demodulator
     3. Decoder
     5. Output: Payload frame
     
 ### Dependencies
-1. UHF receiver application (uhf_rx.grc)
+1. UHF receiver application (os_uhf_rx.grc)
     1. https://github.com/wnagele/gr-gpredict-doppler
-2. OPS-SAT demodulator and decoder (os-demod-decod.grc)
+2. OPS-SAT demodulator and decoder (os-demod-decode.grc)
     1. https://github.com/daniestevez/gr-satellites
     
 ### Recordings
