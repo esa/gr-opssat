@@ -230,7 +230,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-30e3</value>
+      <value>-40e3</value>
     </param>
   </block>
   <block>
@@ -522,7 +522,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>osat_437.17M_200k.fc32</value>
+      <value>osat_437.16M_200k_beacon_mode6.cf32</value>
     </param>
     <param>
       <key>_coordinate</key>
