@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: OPS-SAT UHF RX
-# Author: Fischer Benjamin
+# Author: Fischer Benjamin, Mladenov Tom
 # Description: UHF RX application for offset sampling and doppler compensation (GPredict)
 # GNU Radio version: 3.7.13.5
 ##################################################
@@ -106,7 +106,7 @@ class os_uhf_rx(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0.enable_autoscale(False)
         self.qtgui_freq_sink_x_0.enable_grid(True)
-        self.qtgui_freq_sink_x_0.set_fft_average(1.0)
+        self.qtgui_freq_sink_x_0.set_fft_average(0.1)
         self.qtgui_freq_sink_x_0.enable_axis_labels(True)
         self.qtgui_freq_sink_x_0.enable_control_panel(False)
 
@@ -139,7 +139,7 @@ class os_uhf_rx(gr.top_block, Qt.QWidget):
         self.gpredict_MsgPairToVar_0 = gpredict.MsgPairToVar(self.set_true_freq)
         self.freq_xlating_fir_filter_xxx_0 = filter.freq_xlating_fir_filter_ccc(1, (variable_low_pass_filter_taps_0), -freq_tuned, samp_rate)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_gr_complex*1, 'osat_437.16M_200k_beacon_mode6.cf32', True)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_gr_complex*1, '/home/osops/tom/dev/workspace/osat_437.16M_200k_beacon_mode6.cf32', True)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.analog_simple_squelch_cc_0 = analog.simple_squelch_cc(Squelch, 1)
         self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, -freq_tuned, 1, 0)

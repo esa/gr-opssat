@@ -6,7 +6,7 @@
     <key>options</key>
     <param>
       <key>author</key>
-      <value>Fischer Benjamin</value>
+      <value>Fischer Benjamin, Mladenov Tom</value>
     </param>
     <param>
       <key>window_size</key>
@@ -522,7 +522,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>osat_437.16M_200k_beacon_mode6.cf32</value>
+      <value>/home/osops/tom/dev/workspace/osat_437.16M_200k_beacon_mode6.cf32</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -952,7 +952,7 @@
     </param>
     <param>
       <key>average</key>
-      <value>1.0</value>
+      <value>0.1</value>
     </param>
     <param>
       <key>axislabels</key>
