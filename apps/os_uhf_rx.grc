@@ -1330,7 +1330,7 @@
     </param>
     <param>
       <key>freq0</key>
-      <value>samp_freq</value>
+      <value>signal_freq + offset_freq</value>
     </param>
     <param>
       <key>gain_mode0</key>
@@ -2725,7 +2725,7 @@
     </param>
     <param>
       <key>center_freq0</key>
-      <value>samp_freq</value>
+      <value>signal_freq + offset_freq</value>
     </param>
     <param>
       <key>dc_offs_enb0</key>
