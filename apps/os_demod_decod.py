@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: OPS-SAT UHF demodulator/decoder
-# Author: Fischer Benjamin
+# Author: Fischer Benjamin, Mladenov Tom
 # Description: UHF demodulator and decoder application for the ESA OPS-SAT mission
 # GNU Radio version: 3.7.13.5
 ##################################################
@@ -82,8 +82,44 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.satellites_hdlc_deframer_0_0 = satellites.hdlc_deframer(check_fcs=True, max_length=1000)
         self.satellites_decode_rs_0 = satellites.decode_rs(True, 0)
         self.satellites_check_address_0 = satellites.check_address('DP0OPS', "from")
+        self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
+        	512, #size
+        	firdes.WIN_HAMMING, #wintype
+        	0, #fc
+        	samp_rate, #bw
+        	"OPS-SAT UHF BEACON", #name
+                1 #number of inputs
+        )
+        self.qtgui_waterfall_sink_x_0.set_update_time(0.03)
+        self.qtgui_waterfall_sink_x_0.enable_grid(False)
+        self.qtgui_waterfall_sink_x_0.enable_axis_labels(True)
+
+        if not True:
+          self.qtgui_waterfall_sink_x_0.disable_legend()
+
+        if "complex" == "float" or "complex" == "msg_float":
+          self.qtgui_waterfall_sink_x_0.set_plot_pos_half(not True)
+
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        colors = [0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        for i in xrange(1):
+            if len(labels[i]) == 0:
+                self.qtgui_waterfall_sink_x_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_waterfall_sink_x_0.set_line_label(i, labels[i])
+            self.qtgui_waterfall_sink_x_0.set_color_map(i, colors[i])
+            self.qtgui_waterfall_sink_x_0.set_line_alpha(i, alphas[i])
+
+        self.qtgui_waterfall_sink_x_0.set_intensity_range(-140, 10)
+
+        self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
-        	1024, #size
+        	512, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
         	0, #fc
         	samp_rate, #bw
@@ -96,7 +132,7 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0.enable_autoscale(False)
         self.qtgui_freq_sink_x_0.enable_grid(False)
-        self.qtgui_freq_sink_x_0.set_fft_average(1.0)
+        self.qtgui_freq_sink_x_0.set_fft_average(0.1)
         self.qtgui_freq_sink_x_0.enable_axis_labels(True)
         self.qtgui_freq_sink_x_0.enable_control_panel(False)
 
@@ -157,6 +193,7 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_pdu_to_tagged_stream_1, 0), (self.zeromq_pub_sink_0, 0))
         self.connect((self.blocks_throttle_0, 0), (self.analog_quadrature_demod_cf_0, 0))
         self.connect((self.blocks_throttle_0, 0), (self.qtgui_freq_sink_x_0, 0))
+        self.connect((self.blocks_throttle_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_0_0_0_0, 0), (self.blocks_tagged_stream_to_pdu_0_0_0_0_0, 0))
         self.connect((self.digital_additive_scrambler_bb_0_0, 0), (self.blocks_unpacked_to_packed_xx_0_0_0_0, 0))
         self.connect((self.digital_binary_slicer_fb_0, 0), (self.satellites_nrzi_decode_0, 0))
@@ -177,6 +214,7 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.set_gaussian_taps(firdes.gaussian (1.5, 2* (self.samp_rate / self.baud_rate) , 0.5, 12))
+        self.qtgui_waterfall_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.digital_clock_recovery_mm_xx_0.set_omega((self.samp_rate / self.baud_rate)*(1+0.0))
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
