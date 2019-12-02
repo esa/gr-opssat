@@ -1,1 +1,13 @@
 
+2019-12-02 23:15:16,874 INFO Starting OPS-SAT UHF Desktop
+2019-12-02 23:15:16,874 INFO Loading GUI file /home/osops/tom/dev/git/gr-opssat/apps/desktop/gui/gui.ui
+2019-12-02 23:15:16,937 INFO Started listening on tcp://127.0.0.1:38211 for incoming packets from GR flowgraph
+2019-12-02 23:15:16,937 INFO GUI Thread started
+2019-12-02 23:51:50,908 INFO Starting OPS-SAT UHF Desktop
+2019-12-02 23:51:50,908 INFO Loading GUI file /home/osops/tom/dev/git/gr-opssat/apps/desktop/gui/gui.ui
+2019-12-02 23:51:50,994 INFO Started listening on tcp://127.0.0.1:38211 for incoming packets from GR flowgraph
+2019-12-02 23:51:50,994 INFO GUI Thread started
+2019-12-02 23:51:52,784 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-02 23:52:02,799 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-02 23:52:12,798 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-02 23:52:21,148 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
