@@ -39,14 +39,15 @@ Can be found in docs/os-uhf-specs.pdf
     1. Python 3
     1. https://pypi.org/project/PyQt5/
     2. https://pypi.org/project/pyzmq/
+    3. https://pypi.org/project/crccheck/
     
 ### Recordings
 A clean recording of the NanoCom AX100 beacon can be found in recordings/
 
 
 ## Getting started
-For initial testing purposes, you can unzip the beacon recording it and make the file source block in os_uhf_rx.grc point to the
-unzipped .cf32 file. Regenerate the python output from GnuRadio companion.
+For initial testing purposes, you can unzip the beacon recording and make the file source block in os_uhf_rx.grc point to the
+unzipped .cf32 file. Regenerate the python code from gnuradio-companion.
 
 Run the receiver flowgraph:
 ```
