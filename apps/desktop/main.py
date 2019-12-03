@@ -28,6 +28,16 @@ import collections
 from crccheck.crc import Crc32c
 import logging
 
+NODES = {
+			"1": "Nanomind",
+			"2": "EPS dock",
+			"3": "EPS ACU1",
+			"4": "EPS ACU2",
+			"5": "Nanocom",
+			"6": "EPS PDU1",
+			"7": "EPS PDU2"
+}
+
 
 class Main(QMainWindow):
 
@@ -162,7 +172,7 @@ class Main(QMainWindow):
 				self.packet_history_table.setItem(current_packet_count, 2, QTableWidgetItem(str(csp.getLength())))
 				self.packet_history_table.setItem(current_packet_count, 3, QTableWidgetItem(str(crc_ok)))
 				self.packet_history_table.setItem(current_packet_count, 4, QTableWidgetItem(str(csp.priority)))
-				self.packet_history_table.setItem(current_packet_count, 5, QTableWidgetItem(str(csp.source)))
+				self.packet_history_table.setItem(current_packet_count, 5, QTableWidgetItem(NODES[str(csp.source)]))
 				self.packet_history_table.setItem(current_packet_count, 6, QTableWidgetItem(str(csp.destination)))
 				self.packet_history_table.setItem(current_packet_count, 7, QTableWidgetItem(str(csp.dest_port)))
 				self.packet_history_table.setItem(current_packet_count, 8, QTableWidgetItem(str(csp.source_port)))
@@ -189,7 +199,7 @@ class Main(QMainWindow):
 				self.packet_history_table.setItem(current_packet_count, 2, QTableWidgetItem(str(csp.getLength())))
 				self.packet_history_table.setItem(current_packet_count, 3, QTableWidgetItem(str(crc_ok)))
 				self.packet_history_table.setItem(current_packet_count, 4, QTableWidgetItem(str(csp.priority)))
-				self.packet_history_table.setItem(current_packet_count, 5, QTableWidgetItem(str(csp.source)))
+				self.packet_history_table.setItem(current_packet_count, 5, QTableWidgetItem(NODES[str(csp.source)]))
 				self.packet_history_table.setItem(current_packet_count, 6, QTableWidgetItem(str(csp.destination)))
 				self.packet_history_table.setItem(current_packet_count, 7, QTableWidgetItem(str(csp.dest_port)))
 				self.packet_history_table.setItem(current_packet_count, 8, QTableWidgetItem(str(csp.source_port)))
