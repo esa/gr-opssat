@@ -15,7 +15,7 @@ Can be found in docs/os-uhf-specs.pdf
 
 ### Applications
 1. UHF receiver application (apps/os_uhf_rx.grc)
-    1. Offset sampling (removal of the DC peak of SDRs)
+    1. Offset sampling
     2. Doppler compensation (with GPredict)
     3. Frequency shifting to baseband and downsampling
     5. Noise suppressor (Squelch)
@@ -46,6 +46,8 @@ A clean recording of the NanoCom AX100 beacon can be found in recordings/
 
 
 ## Getting started
+
+Install all dependencies for the grc flowgraphs and the GUI Desktop application.
 For initial testing purposes, you can unzip the beacon recording and make the file source block in os_uhf_rx.grc point to the
 unzipped .cf32 file. Regenerate the python code from gnuradio-companion.
 
@@ -54,7 +56,7 @@ Run the receiver flowgraph:
 python apps/os_uhf_rx.py
 ```
 
-Then start the demodulator and decoder:
+Then start the demodulator/decoder:
 ```
 python apps/os-demod-decode.py
 ```
@@ -70,6 +72,8 @@ You should now see beacon frames being parsed and displayed:
 
 ![screenshot](images/opssat_desktop.png)
 
+The raw packet history shows the received packets, CRC check status and CSP header information.
+
 This application writes to 2 logfiles in apps/desktop/log:
 * One log contains the beacon hex data (beacon.log)
 * The other log contains timestamped events (gui_event.log)
@@ -79,11 +83,14 @@ The GUI desktop application does not need to be running for the system to operat
 
 ## Operational usage
 For operational usage, the device source blocks should be used instead of a file source block.
+
 Doppler offsets are fed to the os_uhf_rx.py flowgraph using gr-predict which runs over 2 local ports.
+To configure the frequency correction, you can follow the intructions at: https://github.com/wnagele/gr-gpredict-doppler
+For OPS-SAT, the nominal downlink frequency should be configured for 437.2 MHz
 
 ![screenshot](images/opssat_tracking.png)
 
-Once it is known which of the pre-assigned NORAD IDs of launch VS23 belongs to OPS-SAT, the currently disabled
+Once it is known which of the pre-assigned NORAD IDs of Arianespace launch VS23 belongs to OPS-SAT, the currently disabled
 telemetry forwarder block in os-demod-decode.grc can be used to forward telemetry to various servers such as SatnogsDB.
 
 
