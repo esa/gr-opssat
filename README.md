@@ -51,7 +51,7 @@ Install all dependencies for the grc flowgraphs and the GUI Desktop application.
 For initial testing purposes, you can unzip the beacon recording in the folder 'recordings' and make the file source block in os_uhf_rx.grc point to the
 unzipped .cf32 file. The samplerate of the beacon recording is 200 ksps so make sure in os_uhf_rx.grc this is the set samp_rate. Regenerate the python code from gnuradio-companion.
 
-Run the receiver flowgraph:
+Run the receiver flowgraph (or run from GRC):
 ```
 python apps/os_uhf_rx.py
 ```
