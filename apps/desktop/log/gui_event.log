@@ -1,1 +1,18 @@
 
+2019-12-05 19:30:00,658 INFO Starting OPS-SAT UHF Desktop
+2019-12-05 19:30:00,660 INFO Loading GUI file /home/osops/tom/dev/git/gr-opssat/apps/desktop/gui/gui.ui
+2019-12-05 19:30:00,736 INFO Started listening on tcp://127.0.0.1:38211 for incoming packets from GR flowgraph
+2019-12-05 19:30:00,736 INFO GUI Thread started
+2019-12-05 19:30:08,966 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:30:17,319 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:30:27,308 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:30:37,302 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:30:47,297 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:30:55,652 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:05,644 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:15,660 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:25,650 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:33,988 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:43,999 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:31:53,991 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
+2019-12-05 19:32:03,983 INFO Received CSP beacon packet of length 58 bytes + 4 byte CRC32C check: OK
