@@ -48,8 +48,8 @@ A clean recording of the NanoCom AX100 beacon can be found in recordings/
 ## Getting started
 
 Install all dependencies for the grc flowgraphs and the GUI Desktop application.
-For initial testing purposes, you can unzip the beacon recording and make the file source block in os_uhf_rx.grc point to the
-unzipped .cf32 file. Regenerate the python code from gnuradio-companion.
+For initial testing purposes, you can unzip the beacon recording in the folder 'recordings' and make the file source block in os_uhf_rx.grc point to the
+unzipped .cf32 file. The samplerate of the beacon recording is 200 ksps so make sure in os_uhf_rx.grc this is the set samp_rate. Regenerate the python code from gnuradio-companion.
 
 Run the receiver flowgraph:
 ```
@@ -96,10 +96,17 @@ os_uhf_rx.grc:
 os_demod_decode.grc:
 * bypass the throttle block
 
+Next configure the doppler correction in Gpredict:
+* Gpredict preferences -> interfaces -> add a 'Radio' interface with RX only settings and localhost port 4532.
 
-Doppler offsets are fed to the os_uhf_rx.py flowgraph using gr-predict which runs over 2 local ports.
-To configure the frequency correction, you can follow the intructions at: https://github.com/wnagele/gr-gpredict-doppler
-For OPS-SAT, the nominal downlink frequency should be configured for 437.2 MHz
+When using the drop-down arrow in the main gpredict tracking interface and selecting 'Radio Control' you should see the following interface:
+
+![screenshot](images/gpredict_doppler.png)
+
+Upon starting the GNURadio flowgraphs:
+* Set Downlink frequency to 437200000
+* Under 'Target' select OPSSAT and click 'Track'
+* Under 'Settings' select Device no 1 as the configured RX interface and click 'Engage'
 
 ![screenshot](images/opssat_tracking.png)
 
