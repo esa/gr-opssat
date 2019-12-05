@@ -405,7 +405,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>dB</string>
+        <string>dBm</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_29">
@@ -418,7 +418,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>dB</string>
+        <string>dBm</string>
        </property>
       </widget>
      </widget>
