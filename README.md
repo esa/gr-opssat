@@ -93,9 +93,6 @@ os_uhf_rx.grc:
 * set samp_rate to 250k (resulted in best performance)
 
 
-os_demod_decode.grc:
-* bypass the throttle block
-
 Next configure the doppler correction in Gpredict:
 * Gpredict preferences -> interfaces -> add a 'Radio' interface with RX only settings and localhost port 4532.
 
