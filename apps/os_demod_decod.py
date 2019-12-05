@@ -168,7 +168,6 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.digital_binary_slicer_fb_0 = digital.binary_slicer_fb()
         self.digital_additive_scrambler_bb_0_0 = digital.additive_scrambler_bb(0xA9, 0xFF, 7, count=0, bits_per_byte=1, reset_tag_key="packet_len")
         self.blocks_unpacked_to_packed_xx_0_0_0_0 = blocks.unpacked_to_packed_bb(1, gr.GR_MSB_FIRST)
-        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tagged_stream_to_pdu_0_0_0_0_0 = blocks.tagged_stream_to_pdu(blocks.byte_t, 'packet_len')
         self.blocks_pdu_to_tagged_stream_1 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
         self.blocks_pdu_to_tagged_stream_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
@@ -191,9 +190,6 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.digital_additive_scrambler_bb_0_0, 0))
         self.connect((self.blocks_pdu_to_tagged_stream_0, 0), (self.blocks_packed_to_unpacked_xx_0, 0))
         self.connect((self.blocks_pdu_to_tagged_stream_1, 0), (self.zeromq_pub_sink_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.analog_quadrature_demod_cf_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.qtgui_freq_sink_x_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_0_0_0_0, 0), (self.blocks_tagged_stream_to_pdu_0_0_0_0_0, 0))
         self.connect((self.digital_additive_scrambler_bb_0_0, 0), (self.blocks_unpacked_to_packed_xx_0_0_0_0, 0))
         self.connect((self.digital_binary_slicer_fb_0, 0), (self.satellites_nrzi_decode_0, 0))
@@ -201,7 +197,9 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.connect((self.digital_descrambler_bb_0_0, 0), (self.satellites_hdlc_deframer_0_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.digital_clock_recovery_mm_xx_0, 0))
         self.connect((self.satellites_nrzi_decode_0, 0), (self.digital_descrambler_bb_0_0, 0))
-        self.connect((self.zeromq_sub_source_0, 0), (self.blocks_throttle_0, 0))
+        self.connect((self.zeromq_sub_source_0, 0), (self.analog_quadrature_demod_cf_0, 0))
+        self.connect((self.zeromq_sub_source_0, 0), (self.qtgui_freq_sink_x_0, 0))
+        self.connect((self.zeromq_sub_source_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "os_demod_decod")
@@ -217,7 +215,6 @@ class os_demod_decod(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.digital_clock_recovery_mm_xx_0.set_omega((self.samp_rate / self.baud_rate)*(1+0.0))
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.analog_quadrature_demod_cf_0.set_gain(2 * (self.samp_rate / self.baud_rate) /(math.pi))
 
     def get_baud_rate(self):
