@@ -81,8 +81,21 @@ This application writes to 2 logfiles in apps/desktop/log:
 The GUI desktop application does not need to be running for the system to operate, i.e. the receiver application and demodulator application can operatate standalone. The GUI desktop is merely meant for parsing and viewing AX100 beacon contents.
 
 
-## Operational usage
+## Operational usage with live reception
 For operational usage, the device source blocks should be used instead of a file source block.
+
+For usage with an RTL-SDR for example the following adaptions must be performed:
+
+os_uhf_rx.grc:
+* disable the file source block
+* enable the RTL-SDR source block
+* bypass the throttle block
+* set samp_rate to 250k (resulted in best performance)
+
+
+os_demod_decode.grc:
+* bypass the throttle block
+
 
 Doppler offsets are fed to the os_uhf_rx.py flowgraph using gr-predict which runs over 2 local ports.
 To configure the frequency correction, you can follow the intructions at: https://github.com/wnagele/gr-gpredict-doppler
