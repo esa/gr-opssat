@@ -135,8 +135,7 @@ class os_uhf_rx(gr.top_block, Qt.QWidget):
 
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_0_win)
-        self.gpredict_doppler_0 = gpredict.doppler("localhost", 4532, False)
-        self.gpredict_MsgPairToVar_0 = gpredict.MsgPairToVar(self.set_true_freq)
+        self.gpredict_doppler_1 = gpredict.doppler(self.set_true_freq, "localhost", 4532, False)
         self.freq_xlating_fir_filter_xxx_0 = filter.freq_xlating_fir_filter_ccc(1, (variable_low_pass_filter_taps_0), -freq_tuned, samp_rate)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_file_source_0 = blocks.file_source(gr.sizeof_gr_complex*1, '/home/osops/tom/dev/workspace/osat_437.16M_200k_beacon_mode6.cf32', True)
@@ -149,7 +148,6 @@ class os_uhf_rx(gr.top_block, Qt.QWidget):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.gpredict_doppler_0, 'freq'), (self.gpredict_MsgPairToVar_0, 'inpair'))
         self.connect((self.analog_sig_source_x_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.analog_simple_squelch_cc_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))
         self.connect((self.analog_simple_squelch_cc_0, 0), (self.qtgui_freq_sink_x_0, 1))

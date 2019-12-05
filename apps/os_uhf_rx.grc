@@ -735,41 +735,6 @@
     </param>
   </block>
   <block>
-    <key>gpredict_MsgPairToVar</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(584, 12)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gpredict_MsgPairToVar_0</value>
-    </param>
-    <param>
-      <key>target</key>
-      <value>true_freq</value>
-    </param>
-  </block>
-  <block>
     <key>gpredict_doppler</key>
     <param>
       <key>alias</key>
@@ -780,40 +745,32 @@
       <value></value>
     </param>
     <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(328, 12)</value>
+      <value>(440, 16)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
     <param>
-      <key>id</key>
-      <value>gpredict_doppler_0</value>
+      <key>gpredict_host</key>
+      <value>localhost</value>
     </param>
     <param>
       <key>gpredict_port</key>
       <value>4532</value>
     </param>
     <param>
-      <key>gpredict_host</key>
-      <value>localhost</value>
+      <key>id</key>
+      <value>gpredict_doppler_1</value>
     </param>
     <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
+      <key>target</key>
+      <value>true_freq</value>
     </param>
     <param>
       <key>verbose</key>
@@ -4144,12 +4101,6 @@
     <sink_block_id>rational_resampler_xxx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>gpredict_doppler_0</source_block_id>
-    <sink_block_id>gpredict_MsgPairToVar_0</sink_block_id>
-    <source_key>freq</source_key>
-    <sink_key>inpair</sink_key>
   </connection>
   <connection>
     <source_block_id>rational_resampler_xxx_0</source_block_id>
