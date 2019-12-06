@@ -20,7 +20,7 @@ Can be found in docs/os-uhf-specs.pdf
     3. Frequency shifting to baseband and downsampling
     5. Noise suppressor (Squelch)
     4. ZMQ sink
-2. OPS-SAT demodulator and decoder (apps/os-demod-decode.grc)
+2. OPS-SAT demodulator and decoder (apps/os_demod_decode.grc)
     1. ZMQ source
     2. GMSK demodulator
     3. Decoder
@@ -40,6 +40,7 @@ Can be found in docs/os-uhf-specs.pdf
     1. https://pypi.org/project/PyQt5/
     2. https://pypi.org/project/pyzmq/
     3. https://pypi.org/project/crccheck/
+    4. https://pypi.org/project/numpy/
     
 ### Recordings
 A clean recording of the NanoCom AX100 beacon can be found in recordings/
@@ -58,7 +59,7 @@ python apps/os_uhf_rx.py
 
 Then start the demodulator/decoder:
 ```
-python apps/os-demod-decode.py
+python apps/os_demod_decode.py
 ```
 You should now see PDU's being printed in the terminal of the demodulator application every 10 seconds.
 
