@@ -33,7 +33,7 @@ Can be found in docs/os-uhf-specs.pdf
 ### Dependencies
 1. UHF receiver application (os_uhf_rx.grc)
     1. https://github.com/wnagele/gr-gpredict-doppler
-2. OPS-SAT demodulator and decoder (os-demod-decode.grc)
+2. OPS-SAT demodulator and decoder (os_demod_decode.grc)
     1. https://github.com/daniestevez/gr-satellites
 3. OPS-SAT UHF Desktop (apps/desktop/main.py)
     1. Python 3
