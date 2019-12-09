@@ -52,15 +52,7 @@ Install all dependencies for the grc flowgraphs and the GUI Desktop application.
 For initial testing purposes, you can unzip the beacon recording in the folder 'recordings' and make the file source block in os_uhf_rx.grc point to the
 unzipped .cf32 file. The samplerate of the beacon recording is 200 ksps so make sure in os_uhf_rx.grc this is the set samp_rate. Regenerate the python code from gnuradio-companion.
 
-Run the receiver flowgraph (or run from GRC):
-```
-python apps/os_uhf_rx.py
-```
-
-Then start the demodulator/decoder:
-```
-python apps/os_demod_decode.py
-```
+Open the flowgraphs apps/os_uhf_rx.grc and apps/os_demod_decode.grc and run them from GNURadio Companion.
 You should now see PDU's being printed in the terminal of the demodulator application every 10 seconds.
 
 To parse and view the beacon contents, the OPS-SAT desktop application can be started with:
