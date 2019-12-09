@@ -85,6 +85,7 @@ os_uhf_rx.grc:
 * bypass the throttle block
 * set samp_rate to 250k (resulted in best performance)
 
+Make sure the ppm offset of your SDR are set correctly and that your system UTC time is correct.
 
 Next configure the doppler correction in Gpredict:
 * Gpredict preferences -> interfaces -> add a 'Radio' interface with RX only settings and localhost port 4532.
