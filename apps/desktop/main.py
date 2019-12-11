@@ -188,8 +188,31 @@ class Main(QMainWindow):
 				self.raw_history_table.setItem(current_packet_count, 2, QTableWidgetItem(str(csp.getLength())))
 				self.raw_history_table.scrollToBottom()
 
+				parsed_data = '{iso_time},{temp_brd},{temp_pa},{last_rssi},{last_rferr},{tx_count},{rx_count},{tx_bytes},{rx_bytes},{active_conf},{boot_count},{boot_cause},{last_contact},{bgnd_rssi},{tx_duty},{tot_tx_count},{tot_rx_count},{tot_tx_bytes},{tot_rx_bytes}'.format(iso_time=datetime.datetime.utcnow().isoformat(),\
+														temp_brd=temp_brd,\
+														temp_pa=temp_pa,\
+														last_rssi=last_rssi,\
+														last_rferr=last_rferr,\
+														tx_count=tx_count,\
+														rx_count=rx_count,\
+														tx_bytes=tx_bytes,\
+														rx_bytes=rx_bytes,\
+														active_conf=active_conf,\
+														boot_count=boot_count,\
+														boot_cause=boot_cause,\
+														last_contact=last_contact,\
+														bgnd_rssi=bgnd_rssi,\
+														tx_duty=tx_duty,\
+														tot_tx_count=tot_tx_count,\
+														tot_rx_count=tot_rx_count,\
+														tot_tx_bytes=tot_tx_bytes,\
+														tot_rx_bytes=tot_rx_bytes)
+
+
 				eventLogger.info('Received CSP beacon packet of length {LEN} bytes + 4 byte CRC32C check: OK'.format(LEN=csp.getLength()))
-				beaconLogger.info(str(csp.getHex()) + str(crc.hex()))
+				raw_data = str(csp.getHex()) + str(crc.hex())
+				rawLogger.info('{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=raw_data))
+				parsedBeaconLogger.info(parsed_data)
 
 			else:
 				current_packet_count = self.packet_history_table.rowCount()
@@ -208,7 +231,6 @@ class Main(QMainWindow):
 				self.packet_history_table.item(current_packet_count, 3).setBackground(QtGui.QColor(0, 255, 0))
 				self.packet_history_table.scrollToBottom()
 
-
 				self.raw_history_table.insertRow(current_packet_count)
 				self.raw_history_table.setItem(current_packet_count, 0, QTableWidgetItem(str(datetime.datetime.utcnow())))
 				self.raw_history_table.setItem(current_packet_count, 1, QTableWidgetItem(str(csp.getHex())))
@@ -216,7 +238,8 @@ class Main(QMainWindow):
 				self.raw_history_table.scrollToBottom()
 
 				eventLogger.info('Received SPP over CSP packet of length {LEN} bytes + 4 byte CRC32C check: OK'.format(LEN=csp.getLength()))
-				beaconLogger.info(str(csp.getHex()) + str(crc.hex()))
+				data = str(csp.getHex()) + str(crc.hex())
+				rawLogger.info('{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=data))
 
 		else:
 			crc_ok = False
@@ -244,6 +267,7 @@ class Main(QMainWindow):
 			self.raw_history_table.scrollToBottom()
 
 			eventLogger.error('Received CSP packet of length {LEN} bytes - Failed CRC32C!'.format(LEN=str(csp.getLength())))
+			#Don't write to any logs.
 
 
 
@@ -352,8 +376,7 @@ class TMadapter(QThread):
 
 
 
-def setup_logger(name, log_file, level=logging.INFO):
-	formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+def setup_logger(name, log_file, formatter, level=logging.INFO):
 	fileHandler = logging.FileHandler(log_file)
 	streamHandler = logging.StreamHandler()
 
@@ -372,8 +395,12 @@ if __name__ == '__main__':
 
 	path = os.path.dirname(os.path.abspath(__file__))
 
-	eventLogger = setup_logger('first_logger', path + '/log/gui_event.log', level=logging.INFO)
-	beaconLogger = setup_logger('second_logger', path + '/log/beacon.log', level=logging.INFO)
+	formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+	eventLogger = setup_logger('first_logger', path + '/log/gui_event.log', formatter, level=logging.INFO)
+
+	plainFormatter = logging.Formatter('%(message)s')
+	rawLogger = setup_logger('second_logger', path + '/log/raw.log', plainFormatter, level=logging.INFO)
+	parsedBeaconLogger = setup_logger('third_logger', path + '/log/parsed_beacon.log', plainFormatter, level=logging.INFO)
 
 	a = QApplication(sys.argv)
 	a.setWindowIcon(QIcon(path + '/gui/img/1200px-ESA_logo_simple.png'))
