@@ -5,6 +5,7 @@ Authors: Fischer Benjamin (benjamin.fischer@esa.int), Tom Mladenov (tom.mladenov
 This repository contains documentation, and applications for receiving, demodulating, and decoding the UHF signal transmitted by the ESA OPS-SAT mission. It also contains a full graphical application for viewing and parsing the beacon frames transmitted by OPS-SAT.
 
 https://opssat1.esoc.esa.int/
+https://opssat1.esoc.esa.int/projects/amateur-radio-information-bulletin
 
 https://www.esa.int/Our_Activities/Operations/OPS-SAT
 
