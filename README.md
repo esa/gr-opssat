@@ -89,6 +89,8 @@ os_uhf_rx.grc:
 * bypass the throttle block
 * set samp_rate to 250k (resulted in best performance)
 
+With higher samplerates/other SDRs it might be necessary to decrease the lowpass filter taps (increase the transition width) to avoid flowgraph congestion.
+
 **Make sure the ppm offset of your SDR are set correctly and that your system UTC time is correct.**
 
 Next configure the doppler correction in Gpredict:
