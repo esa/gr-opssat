@@ -1,0 +1,47 @@
+language: cpp
+compiler: gcc
+sudo: require
+dist: xenial
+
+script:
+  - wget -c https://downloads.egenix.com/python/install-pyrun
+  - bash install-pyrun --python=3.5 appdir/usr/
+  - appdir/usr/bin/pip3 install crccheck
+  - appdir/usr/bin/pip3 install pyzmq
+  - appdir/usr/bin/pip3 install numpy
+  - appdir/usr/bin/pip3 install pyqt5
+  - cp -r apps/desktop/* appdir/usr/bin/
+  - sed -i -e "s|path + '/log|os.getenv('HOME') + '|g" appdir/usr/bin/main.py
+  - |
+    cat > appdir/AppRun <<\EOF
+    #!/bin/bash
+    HERE="$(dirname "$(readlink -f "${0}")")"
+    exec "${HERE}/usr/bin/pyrun" "${HERE}/usr/bin/main.py" "$@"
+    EOF
+    chmod +x  appdir/AppRun  
+  - mkdir -p appdir/usr/share/applications/
+  - |
+    cat > appdir/usr/share/applications/opssat.desktop <<\EOF
+    [Desktop Entry]
+    Type=Application
+    Name=OPS-SAT Telemetry Desktop
+    Comment=Graphical application for viewing and parsing the beacon frames transmitted by OPS-SAT
+    Exec=pyrun3.5 ./bin/main.py
+    Icon=opssat
+    Categories=Science;
+    EOF
+  - cp appdir/usr/share/applications/opssat.desktop appdir/
+  - mkdir -p appdir/usr/share/icons/hicolor/128x128/apps/
+  - convert -resize 128x128 ./apps/desktop/gui/img/ESA_OPS_SAT.png appdir/usr/share/icons/hicolor/128x128/apps/opssat.png
+  - cp appdir/usr/share/icons/hicolor/128x128/apps/opssat.png appdir
+  # Delete everything from the AppDir that is not in the MANIFEST
+  - ( cd appdir/ ; find . -type f -or -type s | sort | uniq > ../ALLFILES ; diff --new-line-format="" --unchanged-line-format="" ../ALLFILES ../MANIFEST | xargs -r rm )
+  - find appdir/ -type d -empty -delete
+  - wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+  - chmod +x appimagetool-*.AppImage
+  - ./appimagetool-*.AppImage appdir/
+  
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
