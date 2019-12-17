@@ -15,7 +15,7 @@ https://www.esa.int/Our_Activities/Operations/OPS-SAT
 Can be found in docs/os-uhf-specs.pdf
 
 ### Applications
-1. UHF receiver application (apps/os_uhf_rx.grc)
+1. UHF receiver application (apps/os_uhf_rx.grc for GNU Radio 3.7 || apps/os_uhf_rx_gnu38.grc for GNU Radio 3.8)
     1. Offset sampling
     2. Doppler compensation (with GPredict)
     3. Frequency shifting to baseband and downsampling
@@ -33,7 +33,8 @@ Can be found in docs/os-uhf-specs.pdf
     
 ### Dependencies
 1. UHF receiver application (os_uhf_rx.grc)
-    1. https://github.com/wnagele/gr-gpredict-doppler
+    1. https://github.com/wnagele/gr-gpredict-doppler   (GNU Radio 3.7)
+       https://github.com/ghostop14/gr-gpredict-doppler (GNU Radio 3.8)
 2. OPS-SAT demodulator and decoder (os_demod_decode.grc)
     1. https://github.com/daniestevez/gr-satellites
 3. OPS-SAT UHF Desktop (apps/desktop/main.py)
