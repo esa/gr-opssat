@@ -44,14 +44,16 @@ Can be found in docs/os-uhf-specs.pdf
     4. https://pypi.org/project/numpy/
     
 ### Recordings
-A clean recording of the NanoCom AX100 beacon can be found in recordings/
+
+Two recordings are included in the repository in the /recordings directory:
+* A strong beacon recording at 200ksps
+* A realistic beacon recording at 250ksps
 
 
 ## Getting started
 
 Install all dependencies for the grc flowgraphs and the GUI Desktop application.
-For initial testing purposes, you can unzip the beacon recording in the folder 'recordings' and make the file source block in os_uhf_rx.grc point to the
-unzipped .cf32 file. The samplerate of the beacon recording is 200 ksps so make sure in os_uhf_rx.grc this is the set samp_rate. Regenerate the python code from gnuradio-companion.
+For initial testing purposes, you can unzip the beacon recordings in the folder 'recordings' and make the file source block in os_uhf_rx.grc point to the unzipped .cf32 file. The samplerate of the strong and weak beacon recordings are 200 ksps and 250ksps respectively so make sure in os_uhf_rx.grc this is the set samp_rate if using the recordings to feed the flowgraph. Regenerate the python code from gnuradio-companion.
 
 Open the flowgraphs apps/os_uhf_rx.grc and apps/os_demod_decode.grc and run them from GNURadio Companion.
 You should now see PDU's being printed in the terminal of the demodulator application every 10 seconds.
@@ -86,6 +88,8 @@ os_uhf_rx.grc:
 * enable the RTL-SDR source block
 * bypass the throttle block
 * set samp_rate to 250k (resulted in best performance)
+
+With higher samplerates/other SDRs it might be necessary to decrease the lowpass filter taps (increase the transition width) to avoid flowgraph congestion.
 
 **Make sure the ppm offset of your SDR are set correctly and that your system UTC time is correct.**
 
