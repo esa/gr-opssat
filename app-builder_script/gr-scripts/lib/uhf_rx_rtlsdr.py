@@ -71,7 +71,7 @@ class os_uhf_rx(gr.top_block, Qt.QWidget):
         self.signal_freq = signal_freq = 437200e3
         self.true_freq = true_freq = signal_freq
         self.samp_rate = samp_rate = 1e6
-        self.offset_freq = offset_freq = 0
+        self.offset_freq = offset_freq = 50e3
         self.doppler_freq = doppler_freq = true_freq - signal_freq
         self.variable_low_pass_filter_taps_0 = variable_low_pass_filter_taps_0 = firdes.low_pass(1.0, samp_rate, 25000,1000, window.WIN_HAMMING, 6.76)
         self.samp_rate_down = samp_rate_down = 57.6e3
