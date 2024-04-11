@@ -15,6 +15,20 @@ https://www.esa.int/Our_Activities/Operations/OPS-SAT
 Can be found in docs/os-uhf-specs.pdf
 
 ### Applications
+
+Authors: Guilhem Honore, Maxence Beuselinck, Tim Oerther
+
+The project has been taken over to be wrapped as an AppImage and the dependencies updated. You can find the releases for x86_64 and aarch64.
+To build it yourself, you can set as executable and run the script [build_appimage.sh](./app-builder_script/build_appimage).
+The goal of the AppImage is to have a working out-of-the-box project for all amateur radio operator.
+
+Once downloaded, run the AppImage with
+```
+chmod +x opssat_uhf-[ARCH].AppImage #set the AppImage as exectuable
+./opssat_uhf-[ARCH].AppImage
+```
+
+### Applications
 1. UHF receiver application (apps/os_uhf_rx.grc for GNU Radio 3.7 || apps/os_uhf_rx_gnu38.grc for GNU Radio 3.8)
     1. Offset sampling
     2. Doppler compensation (with GPredict)

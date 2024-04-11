@@ -1,0 +1,7 @@
+#!/bin/sh
+HERE="$(dirname "$(readlink -f "${0}")")"
+
+export QT_QPA_PLATFORM_PLUGIN_PATH=$HERE/usr/conda/plugins/platforms/
+
+# Execute python script
+exec "$HERE/usr/conda/bin/python" "$HERE/usr/src/main.py"

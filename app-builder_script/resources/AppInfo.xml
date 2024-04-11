@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppInfo>
+    <id>esa.opssat</id>
+    <name>OPS-SAT UHF Signal Toolkit</name>
+    <version>1.0</version>
+    <description>This toolkit contains documentation and applications for receiving, demodulating, and decoding the UHF signal transmitted by the ESA OPS-SAT mission. It also includes a full graphical application for viewing and parsing the beacon frames transmitted by OPS-SAT.</description>
+    <authors>Fischer Benjamin (benjamin.fischer@arcticspacetech.com), Tom Mladenov (tom.mladenov@esa.int)</authors>
+    <license>GNU General Public License v3.0</license>
+    <homepage>https://opssat1.esoc.esa.int/</homepage>
+    <icon>icon.png</icon>
+    <exec>AppRun</exec>
+</AppInfo>
