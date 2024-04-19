@@ -1,7 +1,7 @@
 # Welcome to the radio community guide for the UHF campain of OPS-SAT-1
 ## Getting started with the Desktop application
 
-To begin, you'll need to launch the desktop application, enabling you to receive and decode the UFC packets from OPS-SAT-1 using either an RTL-SDR or a USRP. This application is distributed as a Linux AppImage, presently accessible for x86_64 and aarch64 architectures. You can download it from the release section of this repository.  
+To begin, you'll need to launch the desktop application, enabling you to receive and decode the UFC packets from OPS-SAT-1 using either an RTL-SDR or a USRP. This application is distributed as a Linux AppImage, presently accessible for x86_64 and aarch64 architectures. [You can download it from the release section of this repository](https://github.com/esa/gr-opssat/releases).  
 Once you have the appropriate version, you will need to make it executable using the bash command `chmod +x ./opssat_uhf-$ARCH.AppImage`.  
 You can now start it with `./opssat_uhf-$ARCH.AppImage`.  
 The AppImage is packed with a conda environement with all the needed dependancies in it, which should allows it to run out-of-the-box. Once started you will find this interface with the last received telemetry and the packet history:  
