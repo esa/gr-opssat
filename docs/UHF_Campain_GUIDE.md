@@ -15,7 +15,7 @@ Now, you should be ready to receive real packets! Connect the SDR of you station
 ## Sending packets to the Mission Control Team
 
 Are-you ready to get involve into the reentry UHF campain for OPS-SAT-1? For this, you will need your API key. [Please go to our home page](https://opssat1.esoc.esa.int/frames-collector) where you can also find a leaderboard with all the radio amateurs, based on the number of packets sent to us. Here, you will be able to register. Please keep in mind that your coordonates are optionals, and your username will be displayed in the leaderboard.  
-<img src="./images/register.png" style="width: 65%;">  
+<img src="./images/register.png" style="width: 90%;">  
 After being registered, an API key will be displayed to you and sent by email.  
 Now, everytime before starting a reception process, please go to the `Configure API` tab of the desktop application, input your API key in the appropriate input field, and turn ON API (note that for obvious reason, turning on API will block you from replaying the test sample).  
 This will allow every UHF packets you will receive will to be sent via API to our database :smile: and to try to be at the top of the leaderboard!
