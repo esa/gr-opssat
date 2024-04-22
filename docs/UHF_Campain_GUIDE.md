@@ -30,11 +30,11 @@ Next configure the doppler correction in Gpredict:
 
 When using the drop-down arrow in the main gpredict tracking interface and selecting 'Radio Control' you should see the following interface:
 
-![screenshot](images/gpredict_doppler.png)
+![screenshot](../images/gpredict_doppler.png)
 
 Upon starting the GNURadio flowgraphs:
 * Set Downlink frequency to 437200000
 * Under 'Target' select OPSSAT and click 'Track'
 * Under 'Settings' select Device no 1 as the configured RX interface and click 'Engage'
 
-![screenshot](images/opssat_tracking.png)
+![screenshot](../images/opssat_tracking.png)
