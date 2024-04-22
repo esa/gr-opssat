@@ -10,7 +10,7 @@ Switch from the table `Beacon Telemetry` to the table `Start Process` for the fi
 <img src="./images/tab_start_process.png" style="width: 65%;">  
 You can kill these two processes whenever you want by simply closing the associated windows.  
 
-Now, you should be ready to receive real packets! Connect the SDR of you station to your computer. You can now follow the [Operational usage with live reception](https://github.com/esa/gr-opssat/tree/appimage_builder?tab=readme-ov-file#operational-usage-with-live-reception) to configure Gpredict.
+Now, you should be ready to receive real packets! Connect the SDR of you station to your computer. You can now follow the [Operational usage with live reception](#configuring-gpredict) to configure Gpredict.
 
 ## Sending packets to the Mission Control Team
 
@@ -20,3 +20,21 @@ After being registered, an API key will be displayed to you and sent by email.
 Now, everytime before starting a reception process, please go to the `Configure API` tab of the desktop application, input your API key in the appropriate input field, and turn ON API (note that for obvious reason, turning on API will block you from replaying the test sample).  
 This will allow every UHF packets you will receive will to be sent via API to our database :smile: and to try to be at the top of the leaderboard!
 <img src="./images/tab_configure_api.png" style="width: 65%;">  
+
+## Configuring GPredict
+
+**First, make sure the ppm offset of your SDR are set correctly and that your system UTC time is correct.**
+
+Next configure the doppler correction in Gpredict:
+* Gpredict preferences -> interfaces -> add a 'Radio' interface with RX only settings and localhost port 4532.
+
+When using the drop-down arrow in the main gpredict tracking interface and selecting 'Radio Control' you should see the following interface:
+
+![screenshot](images/gpredict_doppler.png)
+
+Upon starting the GNURadio flowgraphs:
+* Set Downlink frequency to 437200000
+* Under 'Target' select OPSSAT and click 'Track'
+* Under 'Settings' select Device no 1 as the configured RX interface and click 'Engage'
+
+![screenshot](images/opssat_tracking.png)
