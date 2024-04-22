@@ -19,7 +19,7 @@ Can be found in docs/os-uhf-specs.pdf
 Authors: Guilhem Honore, Maxence Beuselinck, Tim Oerther
 
 The project has been taken over to be wrapped as an AppImage and the dependencies updated. You can find the releases for x86_64 and aarch64.
-To build it yourself, you can set as executable and run the script [build_appimage.sh](./app-builder_script/build_appimage).
+To build it yourself, you can set as executable and run the script [build_appimage.sh](./app-builder_script/build_appimage.sh).
 The goal of the AppImage is to have a working out-of-the-box project for all amateur radio operator.
 
 Once downloaded, run the AppImage with
