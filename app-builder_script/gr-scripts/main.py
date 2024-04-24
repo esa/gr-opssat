@@ -235,7 +235,20 @@ class Main(QMainWindow):
 
 					eventLogger.info('Received CSP beacon packet of length {LEN} bytes + 4 byte CRC32C check: OK'.format(LEN=csp.getLength()))
 					raw_data = str(csp.getHex()) + str(crc.hex())
-					rawLogger.info('{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=raw_data))
+					raw_frame = '{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=raw_data)
+					rawLogger.info(raw_frame)
+					# API CALL
+					if api_bool and (api_key is not None):
+						try:
+							api_url = 'https://opssat1.esoc.esa.int/frames-collector/add-frame/'
+							api_token = api_key
+							api_data = {'data': raw_frame}
+							headers = {'Authorization': f'Token {api_token}', 'Content-Type': 'application/json'}
+							response = requests.post(api_url, data=json.dumps(api_data), headers=headers)
+							print(response.status_code)
+							print(response.json())
+						except Exception as e:
+							print(f"Error sending raw data via api: {e}")
 					parsedBeaconLogger.info(parsed_data)
 
 				else:
@@ -263,7 +276,20 @@ class Main(QMainWindow):
 
 					eventLogger.info('Received SPP over CSP packet of length {LEN} bytes + 4 byte CRC32C check: OK'.format(LEN=csp.getLength()))
 					data = str(csp.getHex()) + str(crc.hex())
-					rawLogger.info('{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=data))
+					raw_frame = '{iso_time},{data}'.format(iso_time=datetime.datetime.utcnow().isoformat(), data=data)
+					rawLogger.info(raw_frame)
+					# API CALL
+					if api_bool and (api_key is not None):
+						try:
+							api_url = 'https://opssat1.esoc.esa.int/frames-collector/add-frame/'
+							api_token = api_key
+							api_data = {'data': raw_frame}
+							headers = {'Authorization': f'Token {api_token}', 'Content-Type': 'application/json'}
+							response = requests.post(api_url, data=json.dumps(api_data), headers=headers)
+							print(response.status_code)
+							print(response.json())
+						except Exception as e:
+							print(f"Error sending raw data via api: {e}")
 
 			else:
 				crc_ok = False
@@ -415,12 +441,13 @@ class Main(QMainWindow):
 
 		
 
-		if api_bool and (self.uhf_process_sample == None):
+		if api_bool:
 			self.switch_api_button.setStyleSheet('background-color: rgb(0, 255, 0);')
 			api_key = self.apikeyLineEdit.text()
 			print(f'Sending output to API using api key: {api_key}')
-		elif self.uhf_process_sample != None:
-			eventLogger.error('Could not start API output if sample reception is ongoing')
+		# NOT PRODUCTION COMPATIBLE !-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!
+		#elif self.uhf_process_sample != None:
+		#	eventLogger.error('Could not start API output if sample reception is ongoing')
 		else:
 			self.switch_api_button.setStyleSheet('')
 			print(f'Turn OFF: Sending output to API')
@@ -525,36 +552,6 @@ class TMadapter(QThread):
 				eventLogger.warning('No packets received in the last 15 seconds...{ERR}'.format(ERR=e))
 				self.link.emit(False)
 
-
-class LogCleanupAndSendThread(QThread):
-    log_send_interval = 30  # Interval of 5 minutes in seconds TODO: CHANGE TO 300 secs 30 for test purpuse
-
-    def run(self):
-        global api_bool
-        global api_key
-        
-        while True:
-            self.sleep(self.log_send_interval)
-            
-            if api_bool and (api_key is not None):
-                with open(os.path.join(log_dir, 'parsed_beacon.log'), 'r') as logfile:
-                    for log_line in logfile:
-                        log_line = log_line.strip()  # Remove any trailing newline characters
-                        if log_line:  # Check if the line is not empty
-                            try:
-                                api_url = 'https://opssat1.esoc.esa.int/frames-collector/add-frame/'
-                                api_token = api_key
-                                log_data = {'data': log_line}
-                                headers = {'Authorization': f'Token {api_token}', 'Content-Type': 'application/json'}
-                                response = requests.post(api_url, data=json.dumps(log_data), headers=headers)
-                                print(response.status_code)
-                                print(response.json())
-                            except Exception as e:
-                                print(f"Error sending log line: {e}")
-                        
-                # Empty the parsedBeaconLogger log file
-                open(os.path.join(log_dir, 'parsed_beacon.log'), 'w').close()
-
 def setup_logger(name, log_file, formatter, level=logging.INFO):
 	fileHandler = logging.FileHandler(log_file)
 	streamHandler = logging.StreamHandler()
@@ -582,9 +579,6 @@ if __name__ == '__main__':
         rawLogger = setup_logger('second_logger', os.path.join(log_dir, 'raw.log'), plainFormatter, level=logging.INFO)
         parsedBeaconLogger = setup_logger('third_logger', os.path.join(log_dir, 'parsed_beacon.log'), plainFormatter, level=logging.INFO)
         
-        # Create and start the log cleanup and send thread
-        log_thread = LogCleanupAndSendThread()
-        log_thread.start()
 
         a = QApplication(sys.argv)
         a.setWindowIcon(QIcon(os.path.join(log_dir, 'gui/img/1200px-ESA_logo_simple.png')))
