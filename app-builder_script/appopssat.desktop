@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=opssat_uhf
-Comment=This repository contains documentation, and applications for receiving, demodulating, and decoding the UHF signal transmitted by the ESA OPS-SAT mission. It also contains a full graphical application for viewing and parsing the beacon frames transmitted by OPS-SAT.
-Exec=AppRun
-Icon=icon
-Categories=Science;
-Terminal=false
-StartupNotify=true
