@@ -445,9 +445,8 @@ class Main(QMainWindow):
 			self.switch_api_button.setStyleSheet('background-color: rgb(0, 255, 0);')
 			api_key = self.apikeyLineEdit.text()
 			print(f'Sending output to API using api key: {api_key}')
-		# NOT PRODUCTION COMPATIBLE !-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!
-		#elif self.uhf_process_sample != None:
-		#	eventLogger.error('Could not start API output if sample reception is ongoing')
+		elif self.uhf_process_sample != None:
+			eventLogger.error('Could not start API output if sample reception is ongoing')
 		else:
 			self.switch_api_button.setStyleSheet('')
 			print(f'Turn OFF: Sending output to API')
