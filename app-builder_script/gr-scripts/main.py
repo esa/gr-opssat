@@ -441,7 +441,7 @@ class Main(QMainWindow):
 
 		
 
-		if api_bool:
+		if api_bool and (self.uhf_process_sample == None):
 			self.switch_api_button.setStyleSheet('background-color: rgb(0, 255, 0);')
 			api_key = self.apikeyLineEdit.text()
 			print(f'Sending output to API using api key: {api_key}')
