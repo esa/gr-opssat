@@ -1,0 +1,5 @@
+**/AppDir/*
+*.AppImage
+**/_temp_home/*
+**/__pycache__/*
+./app-grc_script/lib/*.py

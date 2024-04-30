@@ -23,15 +23,22 @@ To build it yourself, you can set as executable and run the script [build_appima
 The goal of the AppImage is to have a working out-of-the-box project for all amateur radio operator.
 
 ## Getting started
-
+There are two ways to use the application to send us data. The appimage available for linux in x86_64 and aarch64 architecture is a system designed to work out-of-the-box. The source code is also available in the gnuradio-companion scripts, enabling you to set up other SDRs and run it on other systems. However, this requires more work in terms of installing dependencies.
+### AppImage
 Please download the appropriate [AppImage](https://github.com/esa/gr-opssat/releases), run the AppImage with
 ```
 chmod +x opssat_uhf-$ARCH.AppImage #set the AppImage as exectuable
 ./opssat_uhf-$ARCH.AppImage
 ```
 
-## Operational usage with live reception
-For operational usage, please look at the [UHF campain guide](docs/UHF_Campain_GUIDE.md)
+#### Operational usage with live reception
+For operational usage, please look at the [UHF campain guide - AppImage](docs/UHF_Campain_GUIDE-AppImage.md)
+
+### GNU Radio companion scripts
+Please download the source from the folder `./app-grc_script`
+
+#### Operational usage with live reception
+[Will be soon writen] For operational usage, please look at the [UHF campain guide - GRC Scripts](docs/UHF_Campain_GUIDE-Scripts.md)
 
 ## Desktop interface
 
