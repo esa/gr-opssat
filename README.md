@@ -38,7 +38,7 @@ For operational usage, please look at the [UHF campain guide - AppImage](docs/UH
 Please download the source from the folder `./app-grc_script`
 
 #### Operational usage with live reception
-[Will be soon writen] For operational usage, please look at the [UHF campain guide - GRC Scripts](docs/UHF_Campain_GUIDE-Scripts.md)
+For operational usage, please look at the [UHF campain guide - GRC Scripts](docs/UHF_Campain_GUIDE-Scripts.md)
 
 ## Desktop interface
 
