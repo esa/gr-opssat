@@ -35,7 +35,7 @@ chmod +x opssat_uhf-$ARCH.AppImage #set the AppImage as exectuable
 For operational usage, please look at the [UHF campain guide - AppImage](docs/UHF_Campain_GUIDE-AppImage.md)
 
 ### GNU Radio companion scripts
-Please download the source from the folder `./app-grc_script`
+Please download the source from the folder ./app-grc_script, you can find it as zipped in the [release](https://github.com/esa/gr-opssat/releases/download/v1.1/opssat_uhf-grc_script.zip).
 
 #### Operational usage with live reception
 For operational usage, please look at the [UHF campain guide - GRC Scripts](docs/UHF_Campain_GUIDE-Scripts.md)
